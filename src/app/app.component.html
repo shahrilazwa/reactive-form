@@ -6,10 +6,12 @@
           <label for="username" class="form-label">Username</label>
           <input type="text" id="username" class="form-control" formControlName="username">
         </div>
+        <span class="span-block" *ngIf="!signUpForm.get('username').valid && signUpForm.get('username').touched">This username is invalid</span>
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
           <input type="text" id="email" class="form-control" formControlName="email">
         </div>
+        <span class="span-block" *ngIf="!signUpForm.get('email').valid && signUpForm.get('email').touched">This email is invalid</span>
         <div *ngFor="let gender of genders" class="form-check">
           <input class="form-check-input" type="radio" name="gender" [value]="gender" id="{{ gender }}">
           <label class="form-check-label" for="{{ gender }}">
