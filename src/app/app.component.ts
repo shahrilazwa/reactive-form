@@ -14,9 +14,20 @@ export class AppComponent implements OnInit{
 
   ngOnInit():void {
     this.signUpForm = new FormGroup ({
-      'username':new FormControl(null, Validators.required),
-      'email':new FormControl(null),
+      'username':new FormControl(null, [
+        Validators.required,
+        Validators.maxLength(15),
+        Validators.minLength(5)
+      ]),
+      'email':new FormControl(null,Validators.required),
       'gender':new FormControl(null)
+    });
+    this.patchDataUsername();
+  }
+
+  patchDataUsername() {
+    this.signUpForm.patchValue({
+    'username':'Roslan'
     });
   }
 
